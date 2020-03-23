@@ -1,6 +1,6 @@
 using System;
 
-namespace Compresion
+namespace Codificacion
 {
     public class WeatherForecast
     {
