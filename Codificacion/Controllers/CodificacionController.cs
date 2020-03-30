@@ -38,17 +38,5 @@ namespace Codificacion.Controllers
             return BadRequest(ModelState);
         }
 
-      
-
-
-
-
-
-
-
-
-
-
-
     }
 }
