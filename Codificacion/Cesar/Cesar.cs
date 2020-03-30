@@ -23,5 +23,9 @@ namespace Codificacion.Cesar
             var archivo = new StreamReader(path);
             var linea = archivo.ReadLine();
         }
+        public void IngresoDecidrado()
+        {
+
+        }
     }
 }
