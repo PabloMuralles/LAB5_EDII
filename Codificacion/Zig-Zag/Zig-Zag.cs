@@ -45,17 +45,26 @@ namespace Codificacion.Zig_Zag
             var CantidadOlas = (Texto.Length) / ElemetosXola;
             CantidadOlas = CantidadOlas % 1 >= 0.5 ? Convert.ToInt32(CantidadOlas) : Convert.ToInt32(CantidadOlas) + 1;
             var ElementosTotales = ElemetosXola * CantidadOlas;
+
             var TextoCompleto = new byte[ElementosTotales];
-
-            for (int i = 0; i < Texto.Length; i++)
+            if (ElementosTotales!=Texto.Length)
             {
-                TextoCompleto[i] = Texto[i];
-            }
 
-            for (int i = Texto.Length; i < ElementosTotales; i++)
-            {
+                for (int i = 0; i < Texto.Length; i++)
+                {
+                    TextoCompleto[i] = Texto[i];
+                }
+
+                for (int i = Texto.Length; i < ElementosTotales; i++)
+                {
                 
-                TextoCompleto[i] = Convert.ToByte(Convert.ToChar("$"));
+                    TextoCompleto[i] = Convert.ToByte(Convert.ToChar("$"));
+                }
+
+            }
+            else
+            {
+                TextoCompleto = Texto;
             }
             
             for (int i = 0; i < niveles_; i++)
