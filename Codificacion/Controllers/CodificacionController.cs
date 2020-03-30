@@ -17,17 +17,17 @@ namespace Codificacion.Controllers
             {
                 switch ($"{nombre}")
                 {
-                    case "cesar":
+                    case "Cesar":
                         Cesar.Cesar.Instance.Ingresar(Info.path);
                         break;
-                    case "zigzag":
-                        Zig_Zag.Zig_Zag.Instance.Ingresar(Info.path,Info.Carriles,nombre);
+                    case "Zig-Zag":
+                        Zig_Zag.Zig_Zag.Instance.Ingresar(Info.path,Info.Carriles);
                         break;
-                    case"vertical" :
-                        //vertical_espiral.vertical_espiral.Instance.Ingresar(Info.path, Info.filas);
+                    case"Vertical" :
+                        vertical_espiral.vertical_espiral.Instance.Ingresar(Info.path, Info.filas);
                         break;
                     case "espiral":
-                        //vertical_espiral.vertical_espiral.Instance.Ingresar(Info.path, Info.filas);
+                        vertical_espiral.vertical_espiral.Instance.Ingresar(Info.path, Info.filas);
                         break;
                     default:
                     //Error                     
