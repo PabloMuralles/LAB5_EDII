@@ -17,7 +17,8 @@ namespace Codificacion.Controllers
             {
                 switch ($"{nombre}")
                 {
-                    case "Cesar":
+
+                    case "cesar":
                         Cesar.Cesar.Instance.Ingresar(Info.path);
                         break;
                     case "Zig-Zag":
@@ -66,9 +67,6 @@ namespace Codificacion.Controllers
             }
             return BadRequest(ModelState);
         }
-
-
-
 
     }
 }
