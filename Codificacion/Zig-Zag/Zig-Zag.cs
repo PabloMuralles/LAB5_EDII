@@ -41,13 +41,29 @@ namespace Codificacion.Zig_Zag
             var TextoCifrado = new List<string>();
             var Posicion = 0;
             var Incrementador = 1;
+            var ElemetosXola = (2 * niveles_) - 2;
+            var CantidadOlas = (Texto.Length) / ElemetosXola;
+            CantidadOlas = CantidadOlas % 1 >= 0.5 ? Convert.ToInt32(CantidadOlas) : Convert.ToInt32(CantidadOlas) + 1;
+            var ElementosTotales = ElemetosXola * CantidadOlas;
+            var TextoCompleto = new byte[ElementosTotales];
+
+            for (int i = 0; i < Texto.Length; i++)
+            {
+                TextoCompleto[i] = Texto[i];
+            }
+
+            for (int i = Texto.Length; i < ElementosTotales; i++)
+            {
+                var prsadf = Convert.ToChar("$");
+                TextoCompleto[i] = Convert.ToByte(Convert.ToChar("$"));
+            }
             
             for (int i = 0; i < niveles_; i++)
             {
                 TextoCifrado.Add("");
             }
 
-            foreach (var item in Texto)
+            foreach (var item in TextoCompleto)
             {
                 if (Posicion + Incrementador == niveles_)
                 {
@@ -98,6 +114,11 @@ namespace Codificacion.Zig_Zag
                 }
 
             }
+
+        }
+
+        private void IngresoDecifrado()
+        {
 
         }
     }
