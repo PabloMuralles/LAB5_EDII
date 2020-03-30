@@ -21,7 +21,7 @@ namespace Codificacion.Controllers
                         Cesar.Cesar.Instance.Ingresar(Info.path);
                         break;
                     case "zigzag":
-                        Zig_Zag.Zig_Zag.Instance.Ingresar(Info.path,Info.Carriles,nombre);
+                        Zig_Zag.Zig_Zag.Instance.Ingresar(Info.path,Info.Carriles,Info.fileName);
                         break;
                     case"vertical" :
                         //vertical_espiral.vertical_espiral.Instance.Ingresar(Info.path, Info.filas);
@@ -37,5 +37,18 @@ namespace Codificacion.Controllers
             }
             return BadRequest(ModelState);
         }
+
+      
+
+
+
+
+
+
+
+
+
+
+
     }
 }

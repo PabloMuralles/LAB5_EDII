@@ -54,7 +54,7 @@ namespace Codificacion.Zig_Zag
 
             for (int i = Texto.Length; i < ElementosTotales; i++)
             {
-                var prsadf = Convert.ToChar("$");
+                
                 TextoCompleto[i] = Convert.ToByte(Convert.ToChar("$"));
             }
             
@@ -117,9 +117,31 @@ namespace Codificacion.Zig_Zag
 
         }
 
-        private void IngresoDecifrado()
-        {
 
+        public void IngresarDecifrado(string path, int niveles, string nombre)
+        {
+            using (var Archivo = new FileStream(path,FileMode.OpenOrCreate))
+            {
+                using (var Reader = new BinaryReader(Archivo) )
+                {
+                    var Longitud = Convert.ToInt32(Reader.BaseStream.Length);
+                    var buffer = new byte[Longitud];
+                    buffer = Reader.ReadBytes(Longitud);
+                    Decifrar(buffer, niveles);
+
+                }
+
+            }
+
+        }
+        private void Decifrar(byte[] TextoCifrado, int niveles)
+        {
+            var NivelesIntermedio = niveles - 2;
+
+            var CaracteresNivelesNoIntermedios = TextoCifrado.Length;
+          
+
+            
         }
     }
 }
