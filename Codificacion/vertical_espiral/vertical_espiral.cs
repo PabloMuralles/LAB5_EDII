@@ -16,9 +16,5 @@ namespace Codificacion.vertical_espiral
                 return _instance;
             }
         }
-        public void IngresoDecidrado()
-        {
-
-        }
     }
 }
