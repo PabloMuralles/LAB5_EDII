@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace Codificacion.vertical_espiral
 {
@@ -15,6 +16,11 @@ namespace Codificacion.vertical_espiral
                 if (_instance == null) _instance = new vertical_espiral();
                 return _instance;
             }
+        }
+        public void Ingresar(string path, int filas)
+        {
+            var archivo = new StreamReader(path);
+            var linea = archivo.ReadLine();
         }
     }
 }

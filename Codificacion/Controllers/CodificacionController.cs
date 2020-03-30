@@ -18,6 +18,7 @@ namespace Codificacion.Controllers
                 switch ($"{nombre}")
                 {
                     case "cesar":
+                        
                         Cesar.Cesar.Instance.Ingresar(Info.path);
                         break;
                     case "zigzag":
