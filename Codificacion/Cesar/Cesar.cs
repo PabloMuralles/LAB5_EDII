@@ -41,5 +41,9 @@ namespace Codificacion.Cesar
             }
             Cesar.Close();
         }
+        public void IngresoDecidrado()
+        {
+
+        }
     }
 }

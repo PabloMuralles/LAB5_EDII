@@ -17,18 +17,18 @@ namespace Codificacion.Controllers
             {
                 switch ($"{nombre}")
                 {
+
                     case "cesar":
-                        
                         Cesar.Cesar.Instance.Ingresar(Info.path);
                         break;
-                    case "zigzag":
-                        Zig_Zag.Zig_Zag.Instance.Ingresar(Info.path,Info.Carriles,nombre);
+                    case "Zig-Zag":
+                        Zig_Zag.Zig_Zag.Instance.Ingresar(Info.path,Info.Carriles);
                         break;
-                    case"vertical" :
-                        //vertical_espiral.vertical_espiral.Instance.Ingresar(Info.path, Info.filas);
+                    case"Vertical" :
+                        vertical_espiral.vertical_espiral.Instance.Ingresar(Info.path, Info.filas);
                         break;
                     case "espiral":
-                        //vertical_espiral.vertical_espiral.Instance.Ingresar(Info.path, Info.filas);
+                        vertical_espiral.vertical_espiral.Instance.Ingresar(Info.path, Info.filas);
                         break;
                     default:
                     //Error                     
@@ -38,5 +38,35 @@ namespace Codificacion.Controllers
             }
             return BadRequest(ModelState);
         }
+        // decifrar
+        [HttpPost]
+        [Route("cipher/{nombre}")]
+        public ActionResult Decifrar([FromBody] Datos_C Info, string nombre)
+        {
+            if (ModelState.IsValid)
+            {
+                switch ($"{nombre}")
+                {
+                    case "Cesar":
+                        Cesar.Cesar.Instance.IngresoDecidrado(Info.path);
+                        break;
+                    case "Zig-Zag":
+                        Zig_Zag.Zig_Zag.Instance.IngresoDecidrado(Info.path, Info.Carriles);
+                        break;
+                    case "Vertical":
+                        vertical_espiral.vertical_espiral.Instance.IngresoDecidrado(Info.path, Info.filas);
+                        break;
+                    case "espiral":
+                        vertical_espiral.vertical_espiral.Instance.IngresoDecidrado(Info.path, Info.filas);
+                        break;
+                    default:
+                        //Error                     
+                        break;
+                }
+                return Ok();
+            }
+            return BadRequest(ModelState);
+        }
+
     }
 }
