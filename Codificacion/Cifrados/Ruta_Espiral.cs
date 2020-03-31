@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.IO;
 
-namespace Codificacion.Cifrados2
+namespace Codificacion.Cifrados
 {
     public class Ruta_Espiral
     {

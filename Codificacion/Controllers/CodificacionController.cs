@@ -15,16 +15,16 @@ namespace Codificacion.Controllers
                 {
 
                     case "cesar":
-                        Cesar.Cesar.Instance.Ingresar(Info.path);
+                        Cifrados.Cesar.Instance.Ingresar(Info.path);
                         break;
                     case "Zig-Zag":
-                        Zig_Zag.Zig_Zag.Instance.Ingresar(Info.path, Info.Carriles);
+                        Cifrados.ZigZag.Instance.Ingresar(Info.path, Info.Carriles);
                         break;
                     case "Vertical":
-                        vertical_espiral.Ruta_Espiral.Instance.Ingresar(Info.path, Info.filas);
+                        Cifrados.Ruta_Espiral.Instance.Ingresar(Info.path, Info.filas);
                         break;
                     case "espiral":
-                        vertical_espiral.Ruta_Espiral.Instance.Ingresar(Info.path, Info.filas);
+                        Cifrados.Ruta_Espiral.Instance.Ingresar(Info.path, Info.filas);
                         break;
                     default:
                         //Error                     
@@ -36,7 +36,7 @@ namespace Codificacion.Controllers
         }
         // decifrar
         [HttpPost]
-        [Route("cipher/{nombre}")]
+        [Route("decipher/{nombre}")]
         public ActionResult Decifrar([FromBody] Datos_C Info, string nombre)
         {
             if (ModelState.IsValid)
@@ -47,13 +47,13 @@ namespace Codificacion.Controllers
                         Cifrados.Cesar.Instance.IngresoDecidrado();
                         break;
                     case "Zig-Zag":
-                        Zig_Zag.Zig_Zag.Instance.IngresoDe();
+                        Cifrados.ZigZag.Instance.DecifrarIngresar();
                         break;
                     case "Vertical":
-                        vertical_espiral.Ruta_Espiral.Instance.IngresoDecidrado(Info.path, Info.filas);
+                        Cifrados.Ruta_Espiral.Instance.IngresoDecidrado( );
                         break;
                     case "espiral":
-                        vertical_espiral.Ruta_Espiral.Instance.IngresoDecidrado(Info.path, Info.filas);
+                        Cifrados.Ruta_Espiral.Instance.IngresoDecidrado( );
                         break;
                     default:
                         //Error                     
