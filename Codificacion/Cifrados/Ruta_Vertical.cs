@@ -30,7 +30,7 @@ namespace Codificacion.Cifrados
                     var Buffer = new byte[Longitud];
                     Buffer = Reader.ReadBytes(Longitud);
                     var textocifrado = Cifradro(Buffer, filas);
-                    Escribir(textocifrado, nombre);
+                    EscribirCifrado(textocifrado, nombre);
 
                 }
             }
@@ -77,7 +77,7 @@ namespace Codificacion.Cifrados
             return TextoCifrado.ToArray();
         }
 
-        public void Escribir(byte[] TextoCipher ,string nombre_) 
+        public void EscribirCifrado(byte[] TextoCipher ,string nombre_) 
         {
             var DireccionCarpetaCifrado = Environment.CurrentDirectory;
 
@@ -96,9 +96,91 @@ namespace Codificacion.Cifrados
             
 
         }
-        public void IngresoDecidrado()
+        public void IngresoDecidrado(string path, int filas, string nombre)
         {
+            using (var Archivo = new FileStream(path,FileMode.Open))
+            {
+                using (var Reader = new BinaryReader(Archivo))
+                {
+                    var Longuitd = Convert.ToInt32(Reader.BaseStream.Length);
+                    var Buffer = new byte[Longuitd];
+                    Buffer = Reader.ReadBytes(Longuitd);
+                    var TextoDecifrado = Decifrar(Buffer, filas);
+                    EscribirDecifrado(TextoDecifrado, nombre);
+                    
+                }
+            }
 
         }
+
+        private byte[] Decifrar(byte[] TextoCifrado, int Filas)
+        {
+            var Columnas = TextoCifrado.Length / Filas;
+             
+            var Matriz = new byte[Columnas, Filas];
+            var jfsdf = Columnas % 1;
+            var Caracter = new Queue<byte>();
+            var Contador = 0;
+
+            foreach (var item in TextoCifrado)
+            {
+                Caracter.Enqueue(item);
+            }
+
+            for (int i = 0; i < Columnas; i++)
+            {
+                for (int j = 0; j < Filas; j++)
+                {
+                    if (Contador < TextoCifrado.Length)
+                    {
+                        Matriz[i, j] = Caracter.Dequeue();
+                        Contador++;
+                    }
+
+                }
+
+            }
+            var TextoDecifrado = new List<byte>();
+            var ContadorDecifrado = 0;
+
+            for (int i = 0; i < Filas; i++)
+            {
+                for (int j = 0; j < Columnas; j++)
+                {
+                    if (ContadorDecifrado < TextoCifrado.Length)
+                    {
+                        TextoDecifrado.Add(Matriz[j, i]);
+                        Contador++;
+
+                    }
+                }
+            }
+
+            return TextoDecifrado.ToArray();
+
+        }
+
+
+        public void EscribirDecifrado(byte[] TextoDecipher, string nombre_)
+        {
+            var DireccionCarpetaCifrado = Environment.CurrentDirectory;
+
+            if (!Directory.Exists(Path.Combine(DireccionCarpetaCifrado, "DecifradosVertical")))
+            {
+                Directory.CreateDirectory(Path.Combine(DireccionCarpetaCifrado, "DecifradosVertical"));
+            }
+
+            using (var streamer = new FileStream(Path.Combine(DireccionCarpetaCifrado, "DecifradosVertical", $"{nombre_}.txt"), FileMode.OpenOrCreate))
+            {
+                using (var write = new BinaryWriter(streamer))
+                {
+                    write.Write(TextoDecipher);
+                }
+            }
+
+
+        }
+
+
     }
 }

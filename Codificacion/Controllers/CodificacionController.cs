@@ -53,7 +53,7 @@ namespace Codificacion.Controllers
                         Cifrados.ZigZag.Instance.IngresarDecifrado(Info.path,Info.Carriles,Info.fileName);
                         break;
                     case "Vertical":
-                        Cifrados.Ruta_Espiral.Instance.IngresoDecidrado( );
+                        Cifrados.Ruta_Vertical.Instance.IngresoDecidrado(Info.path, Info.filas, Info.fileName);
                         break;
                     case "espiral":
                         Cifrados.Ruta_Espiral.Instance.IngresoDecidrado( );
