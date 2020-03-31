@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace Codificacion.Controllers
 {
@@ -22,18 +18,18 @@ namespace Codificacion.Controllers
                         Cesar.Cesar.Instance.Ingresar(Info.path);
                         break;
                     case "Zig-Zag":
-                        Zig_Zag.Zig_Zag.Instance.Ingresar(Info.path,Info.Carriles);
+                        Zig_Zag.Zig_Zag.Instance.Ingresar(Info.path, Info.Carriles);
                         break;
-                    case"Vertical" :
-                        vertical_espiral.vertical_espiral.Instance.Ingresar(Info.path, Info.filas);
+                    case "Vertical":
+                        vertical_espiral.Ruta_Espiral.Instance.Ingresar(Info.path, Info.filas);
                         break;
                     case "espiral":
-                        vertical_espiral.vertical_espiral.Instance.Ingresar(Info.path, Info.filas);
+                        vertical_espiral.Ruta_Espiral.Instance.Ingresar(Info.path, Info.filas);
                         break;
                     default:
-                    //Error                     
+                        //Error                     
                         break;
-                }          
+                }
                 return Ok();
             }
             return BadRequest(ModelState);
@@ -48,16 +44,16 @@ namespace Codificacion.Controllers
                 switch ($"{nombre}")
                 {
                     case "Cesar":
-                        Cesar.Cesar.Instance.IngresoDecidrado(Info.path);
+                        Cifrados.Cesar.Instance.IngresoDecidrado();
                         break;
                     case "Zig-Zag":
-                        Zig_Zag.Zig_Zag.Instance.IngresoDecidrado(Info.path, Info.Carriles);
+                        Zig_Zag.Zig_Zag.Instance.IngresoDe();
                         break;
                     case "Vertical":
-                        vertical_espiral.vertical_espiral.Instance.IngresoDecidrado(Info.path, Info.filas);
+                        vertical_espiral.Ruta_Espiral.Instance.IngresoDecidrado(Info.path, Info.filas);
                         break;
                     case "espiral":
-                        vertical_espiral.vertical_espiral.Instance.IngresoDecidrado(Info.path, Info.filas);
+                        vertical_espiral.Ruta_Espiral.Instance.IngresoDecidrado(Info.path, Info.filas);
                         break;
                     default:
                         //Error                     

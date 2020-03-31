@@ -1,19 +1,19 @@
-﻿ using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.IO;
 
-namespace Codificacion.vertical_espiral
+namespace Codificacion.Cifrados2
 {
-    public class vertical_espiral
+    public class Ruta_Espiral
     {
-        private static vertical_espiral _instance = null;
-        public static vertical_espiral Instance
+        private static Ruta_Espiral _instance = null;
+        public static Ruta_Espiral Instance
         {
             get
             {
-                if (_instance == null) _instance = new vertical_espiral();
+                if (_instance == null) _instance = new Ruta_Espiral();
                 return _instance;
             }
         }
@@ -23,9 +23,13 @@ namespace Codificacion.vertical_espiral
             var archivo = new StreamReader(path);
             var linea = archivo.ReadLine();
 
+        }
         public void IngresoDecidrado()
         {
 
         }
+
+
+
     }
 }
