@@ -13,7 +13,7 @@ namespace Codificacion.Controllers
             {
                 switch ($"{nombre}")
                 {
-<<<<<<< HEAD
+
                     case "cesar":
                         Cesar.Cesar.Instance.Ingresar(Info.path);
                         break;
@@ -25,7 +25,7 @@ namespace Codificacion.Controllers
                         break;
                     case "espiral":
                         //vertical_espiral.vertical_espiral.Instance.Ingresar(Info.path, Info.filas);
-=======
+
 
                     case "cesar":
                         Cesar.Cesar.Instance.Ingresar(Info.path);
@@ -38,7 +38,7 @@ namespace Codificacion.Controllers
                         break;
                     case "espiral":
                         vertical_espiral.Ruta_Espiral.Instance.Ingresar(Info.path, Info.filas);
->>>>>>> Controlador
+
                         break;
                     default:
                         //Error                     
@@ -48,9 +48,7 @@ namespace Codificacion.Controllers
             }
             return BadRequest(ModelState);
         }
-<<<<<<< HEAD
-=======
-        // decifrar
+
         [HttpPost]
         [Route("cipher/{nombre}")]
         public ActionResult Decifrar([FromBody] Datos_C Info, string nombre)
@@ -79,7 +77,7 @@ namespace Codificacion.Controllers
             }
             return BadRequest(ModelState);
         }
->>>>>>> Controlador
+
 
     }
 }
