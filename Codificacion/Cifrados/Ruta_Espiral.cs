@@ -21,8 +21,7 @@ namespace Codificacion.Cifrados
 
         public void Ingresar( )
         {
-            var archivo = new StreamReader(path);
-            var linea = archivo.ReadLine();
+   
  
         }
         public void IngresoDecidrado()

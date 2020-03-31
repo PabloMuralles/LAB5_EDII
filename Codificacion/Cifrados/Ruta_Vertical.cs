@@ -20,7 +20,7 @@ namespace Codificacion.Cifrados
             }
         }
 
-        public void Ingresar(string path, int filas)
+        public void Ingresar(/*string path, int filas*/)
         {
 
 

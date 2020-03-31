@@ -19,13 +19,13 @@ namespace Codificacion.Controllers
                         break;
  
                     case "ZigZag":
-                        Cifrados.ZigZag.Instance.Ingresar(Info.path, Info.Carriles);
+                        Cifrados.ZigZag.Instance.Ingresar(Info.path, Info.Carriles,Info.fileName);
                         break;
                     case "Vertical":
-                        Cifrados.Ruta_Espiral.Instance.Ingresar(Info.path, Info.filas);
+                        Cifrados.Ruta_Espiral.Instance.Ingresar(/*Info.path, Info.filas*/);
                         break;
                     case "espiral":
-                        Cifrados.Ruta_Espiral.Instance.Ingresar(Info.path, Info.filas);
+                        Cifrados.Ruta_Espiral.Instance.Ingresar(/*Info.path, Info.filas*/);
  
                         break;
                     default:
