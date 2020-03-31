@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.IO;
 
-namespace Codificacion.Cesar
+namespace Codificacion.Cifrados
 {
     public class Cesar
     {
@@ -17,7 +17,7 @@ namespace Codificacion.Cesar
                 return _instance;
             }
         }
-         List<char> Texto_cifrado = new List<char>();
+        List<char> Texto_cifrado = new List<char>();
         public void Ingresar(string path)
         {
             var archivo = new StreamReader(path);
@@ -37,9 +37,17 @@ namespace Codificacion.Cesar
             StreamWriter Cesar = new StreamWriter(@"c:\Temp\compresion_cesar.txt");
             foreach (var item in Texto_cifrado)
             {
-                Cesar.Write("{0}",Convert.ToString(item));
+                Cesar.Write("{0}", Convert.ToString(item));
             }
             Cesar.Close();
         }
+ 
+ 
+        public void IngresoDecidrado()
+        {
+
+        }
+
+ 
     }
 }

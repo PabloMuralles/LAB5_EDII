@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace Codificacion.Controllers
 {
@@ -19,21 +15,23 @@ namespace Codificacion.Controllers
                 { 
  
                     case "cesar":
-                        Cesar.Cesar.Instance.Ingresar(Info.path);
+                        Cifrados.Cesar.Instance.Ingresar(Info.path);
                         break;
-                    case "zigzag":
-                        Zig_Zag.Zig_Zag.Instance.Ingresar(Info.path,Info.Carriles,Info.fileName);
+ 
+                    case "ZigZag":
+                        Cifrados.ZigZag.Instance.Ingresar(Info.path, Info.Carriles);
                         break;
-                    case"vertical" :
-                        //vertical_espiral.vertical_espiral.Instance.Ingresar(Info.path, Info.filas);
+                    case "Vertical":
+                        Cifrados.Ruta_Espiral.Instance.Ingresar(Info.path, Info.filas);
                         break;
                     case "espiral":
-                        //vertical_espiral.vertical_espiral.Instance.Ingresar(Info.path, Info.filas);
+                        Cifrados.Ruta_Espiral.Instance.Ingresar(Info.path, Info.filas);
+ 
                         break;
                     default:
-                    //Error                     
+                        //Error                     
                         break;
-                }          
+                }
                 return Ok();
             }
             return BadRequest(ModelState);
@@ -47,18 +45,21 @@ namespace Codificacion.Controllers
             {
                 switch ($"{nombre}")
                 {
-                    //case "Cesar":
-                    //    Cesar.Cesar.Instance.IngresoDecidrado(Info.path);
-                    //    break;
-                    case "zigzag":
-                        Zig_Zag.Zig_Zag.Instance.IngresarDecifrado(Info.path, Info.Carriles,nombre);
+ 
+                    case "Cesar":
+                        Cifrados.Cesar.Instance.IngresoDecidrado();
                         break;
-                    //case "Vertical":
-                    //    vertical_espiral.vertical_espiral.Instance.IngresoDecidrado(Info.path, Info.filas);
-                    //    break;
-                    //case "espiral":
-                    //    vertical_espiral.vertical_espiral.Instance.IngresoDecidrado(Info.path, Info.filas);
-                    //    break;
+                    case "Zig-Zag":
+                        Cifrados.ZigZag.Instance.DecifrarIngresar();
+                        break;
+                    case "Vertical":
+                        Cifrados.Ruta_Espiral.Instance.IngresoDecidrado( );
+                        break;
+                    case "espiral":
+                        Cifrados.Ruta_Espiral.Instance.IngresoDecidrado( );
+ 
+                        break;
+ 
                     default:
                         //Error                     
                         break;
