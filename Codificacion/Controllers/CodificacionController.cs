@@ -40,25 +40,25 @@ namespace Codificacion.Controllers
         }
  
         [HttpPost]
-        [Route("cipher/{nombre}")]
+        [Route("decipher/{nombre}")]
         public ActionResult Decifrar([FromBody] Datos_C Info, string nombre)
         {
             if (ModelState.IsValid)
             {
                 switch ($"{nombre}")
                 {
-                    case "Cesar":
-                        Cesar.Cesar.Instance.IngresoDecidrado(Info.path);
+                    //case "Cesar":
+                    //    Cesar.Cesar.Instance.IngresoDecidrado(Info.path);
+                    //    break;
+                    case "zigzag":
+                        Zig_Zag.Zig_Zag.Instance.IngresarDecifrado(Info.path, Info.Carriles,nombre);
                         break;
-                    case "Zig-Zag":
-                        Zig_Zag.Zig_Zag.Instance.IngresoDecidrado(Info.path, Info.Carriles);
-                        break;
-                    case "Vertical":
-                        vertical_espiral.vertical_espiral.Instance.IngresoDecidrado(Info.path, Info.filas);
-                        break;
-                    case "espiral":
-                        vertical_espiral.vertical_espiral.Instance.IngresoDecidrado(Info.path, Info.filas);
-                        break;
+                    //case "Vertical":
+                    //    vertical_espiral.vertical_espiral.Instance.IngresoDecidrado(Info.path, Info.filas);
+                    //    break;
+                    //case "espiral":
+                    //    vertical_espiral.vertical_espiral.Instance.IngresoDecidrado(Info.path, Info.filas);
+                    //    break;
                     default:
                         //Error                     
                         break;

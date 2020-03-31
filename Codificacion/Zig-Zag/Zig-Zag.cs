@@ -20,7 +20,7 @@ namespace Codificacion.Zig_Zag
         }
         public void Ingresar(string path, int niveles, string nombre)
         {
-            using (var archivo = new FileStream(path,FileMode.OpenOrCreate))
+            using (var archivo = new FileStream(path,FileMode.Open))
             {
                 using (var reader = new BinaryReader(archivo))
                 {
@@ -44,9 +44,9 @@ namespace Codificacion.Zig_Zag
             var ElemetosXola = (2 * niveles_) - 2;
             var CantidadOlas = (Texto.Length) / ElemetosXola;
             CantidadOlas = CantidadOlas % 1 >= 0.5 ? Convert.ToInt32(CantidadOlas) : Convert.ToInt32(CantidadOlas) + 1;
-            var ElementosTotales = ElemetosXola * CantidadOlas;
-
+            var ElementosTotales = ElemetosXola * CantidadOlas; 
             var TextoCompleto = new byte[ElementosTotales];
+
             if (ElementosTotales!=Texto.Length)
             {
 
@@ -66,7 +66,7 @@ namespace Codificacion.Zig_Zag
             {
                 TextoCompleto = Texto;
             }
-            
+             
             for (int i = 0; i < niveles_; i++)
             {
                 TextoCifrado.Add("");
@@ -129,7 +129,7 @@ namespace Codificacion.Zig_Zag
 
         public void IngresarDecifrado(string path, int niveles, string nombre)
         {
-            using (var Archivo = new FileStream(path,FileMode.OpenOrCreate))
+            using (var Archivo = new FileStream(path,FileMode.Open))
             {
                 using (var Reader = new BinaryReader(Archivo) )
                 {
