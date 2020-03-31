@@ -18,8 +18,8 @@ namespace Codificacion.Zig_Zag
         }
         public void Ingresar(string path, int carriles)
         {
-            var archivo = new StreamReader(path);
-            var linea = archivo.ReadLine();
+            //var archivo = new StreamReader(path);
+          //  var linea = archivo.ReadLine();
         }
     }
 }
