@@ -18,8 +18,8 @@ namespace Codificacion.Controllers
                         Cifrados.Cesar.Instance.Ingresar(Info.path);
                         break;
  
-                    case "ZigZag":
-                        Cifrados.ZigZag.Instance.Ingresar(Info.path, Info.Carriles,Info.fileName);
+                    case "zigzag":
+                        Cifrados.ZigZag.Instance.Ingresar(Info.path, Info.carriles,Info.fileName);
                         break;
                     case "Vertical":
                         Cifrados.Ruta_Vertical.Instance.Ingresar(Info.path, Info.filas,Info.fileName);
@@ -49,8 +49,8 @@ namespace Codificacion.Controllers
                     case "Cesar":
                         Cifrados.Cesar.Instance.IngresoDecidrado();
                         break;
-                    case "Zig-Zag":
-                        Cifrados.ZigZag.Instance.IngresarDecifrado(Info.path,Info.Carriles,Info.fileName);
+                    case "zigzag":
+                        Cifrados.ZigZag.Instance.IngresarDecifrado(Info.path,Info.carriles,Info.fileName);
                         break;
                     case "Vertical":
                         Cifrados.Ruta_Vertical.Instance.IngresoDecidrado(Info.path, Info.filas, Info.fileName);

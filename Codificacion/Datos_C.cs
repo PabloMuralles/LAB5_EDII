@@ -8,7 +8,7 @@ namespace Codificacion
     public class Datos_C
     {
         public string fileName { get; set; }
-        public int Carriles { get; set; }
+        public int carriles { get; set; }
         public string path { get; set; }
         public int filas { get; set; }
     }

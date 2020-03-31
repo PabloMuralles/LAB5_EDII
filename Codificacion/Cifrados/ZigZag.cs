@@ -114,7 +114,7 @@ namespace Codificacion.Cifrados
                 Directory.CreateDirectory(Path.Combine(CarpetaZigzagCifrado, "CifradoZigZag"));
             }
 
-            using (var streamwriter = new FileStream(Path.Combine(CarpetaZigzagCifrado, "CifradoZigZag", $"{nombre_}.text"), FileMode.OpenOrCreate))
+            using (var streamwriter = new FileStream(Path.Combine(CarpetaZigzagCifrado, "CifradoZigZag", $"{nombre_}.txt"), FileMode.OpenOrCreate))
             {
                 using (var write = new BinaryWriter(streamwriter))
                 {
@@ -146,7 +146,12 @@ namespace Codificacion.Cifrados
         {
             var NivelesIntermedio = niveles - 2;
 
-            var CaracteresNivelesNoIntermedios = TextoCifrado.Length;
+            var CaracteresNivelesNoIntermedios = TextoCifrado.Length / (2 + (2 * NivelesIntermedio));
+
+            var CantidadCaracterIntermedio = TextoCifrado.Length - (2 * CaracteresNivelesNoIntermedios);
+
+            var IntervalosCaracteresIntermedio = CantidadCaracterIntermedio / NivelesIntermedio;
+
 
 
 
