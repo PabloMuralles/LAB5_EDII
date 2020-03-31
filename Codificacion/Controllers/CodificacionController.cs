@@ -17,7 +17,7 @@ namespace Codificacion.Controllers
                     case "cesar":
                         Cifrados.Cesar.Instance.Ingresar(Info.path);
                         break;
-                    case "Zig-Zag":
+                    case "ZigZag":
                         Cifrados.ZigZag.Instance.Ingresar(Info.path, Info.Carriles);
                         break;
                     case "Vertical":
