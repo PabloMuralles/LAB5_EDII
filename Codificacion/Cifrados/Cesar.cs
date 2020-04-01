@@ -42,10 +42,20 @@ namespace Codificacion.Cifrados
             Cesar.Close();
         }
  
- 
-        public void IngresoDecidrado()
+       
+        public void IngresoDescifrado(string path)
         {
-
+            var archivo = new StreamReader(path);
+            var linea = archivo.ReadLine();
+            int tamaño = linea.Length;
+            char[] caracter = new char[tamaño];
+            for (int i = 0; i < tamaño; i++)
+            {
+                int posicion = (int)linea[i];
+                caracter[i] = (char)(posicion - 3);
+                Texto_cifrado.Add(caracter[i]);
+            }
+            Escribir();
         }
 
  
