@@ -18,7 +18,7 @@ namespace Codificacion.Cifrados
             }
         }
         List<char> Texto_cifrado = new List<char>();
-        public void Ingresar(string path)
+        public void Ingresar(string path,string Nombre)
         {
             var archivo = new StreamReader(path);
             var linea = archivo.ReadLine();
@@ -30,23 +30,58 @@ namespace Codificacion.Cifrados
                 caracter[i] = (char)(posicion + 3);
                 Texto_cifrado.Add(caracter[i]);
             }
-            Escribir();
+            Escrituracifrado(Nombre);
         }
-        public void Escribir()
+        public void Escrituracifrado(string Nombre)
         {
-            StreamWriter Cesar = new StreamWriter(@"c:\Temp\compresion_cesar.txt");
-            foreach (var item in Texto_cifrado)
+            string CarpetaCesarCifrar = Environment.CurrentDirectory;
+            if (!Directory.Exists(Path.Combine(CarpetaCesarCifrar, "CifradoCesar")))
             {
-                Cesar.Write("{0}", Convert.ToString(item));
+                Directory.CreateDirectory(Path.Combine(CarpetaCesarCifrar, "CifradoCesar"));
             }
-            Cesar.Close();
+            using (var writeStream = new FileStream(Path.Combine(CarpetaCesarCifrar, "CifradoCesar", $"{Nombre}.text"), FileMode.OpenOrCreate))
+            {
+                string Texto = string.Empty;
+              foreach (var item in Texto_cifrado)
+              {
+                     Texto = Texto + Convert.ToString(item) ;
+              }
+                using (var write = new BinaryWriter(writeStream))
+                {
+                    write.Write(Texto);
+                }
+            }                     
+        }
+        public void EscrituraDesifrado(string Nombre)
+        {
+            string CarpetaCesarDesifrar = Environment.CurrentDirectory;
+            if (!Directory.Exists(Path.Combine(CarpetaCesarDesifrar, "DescifradoCesar")))
+            {
+                Directory.CreateDirectory(Path.Combine(CarpetaCesarDesifrar, "DescifradoCesar"));
+            }
+            using (var writeStream = new FileStream(Path.Combine(CarpetaCesarDesifrar, "DescifradoCesar", $"{Nombre}.text"), FileMode.OpenOrCreate))
+            {
+                string Texto = string.Empty;
+                foreach (var item in Texto_cifrado)
+                {
+                    Texto = Texto + Convert.ToString(item);
+                }
+                using (var write = new BinaryWriter(writeStream))
+                {
+                    write.Write(Texto);
+                }
+            }
         }
  
        
-        public void IngresoDescifrado(string path)
+        public void IngresoDescifrado(string path,string Nombre)
         {
             var archivo = new StreamReader(path);
             var linea = archivo.ReadLine();
+            if (linea == null)
+            {
+                linea = archivo.ReadLine();
+            }
             int tamaño = linea.Length;
             char[] caracter = new char[tamaño];
             for (int i = 0; i < tamaño; i++)
@@ -55,7 +90,7 @@ namespace Codificacion.Cifrados
                 caracter[i] = (char)(posicion - 3);
                 Texto_cifrado.Add(caracter[i]);
             }
-            Escribir();
+            EscrituraDesifrado(Nombre);
         }
 
  
