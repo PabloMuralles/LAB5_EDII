@@ -50,10 +50,10 @@ namespace Codificacion.Controllers
                         Cifrados.ZigZag.Instance.DecifrarIngresar();
                         break;
                     case "Vertical":
-                        Cifrados.Ruta_Espiral.Instance.IngresoDecidrado( );
+                        Cifrados.Ruta_Vertical.Instance.IngresoDecidrado( );
                         break;
                     case "espiral":
-                        Cifrados.Ruta_Espiral.Instance.IngresoDecidrado( );
+                        Cifrados.Ruta_Espiral.Instance.IngresoDecidrado(Info.path, Info.filas, Info.fileName);
                         break;
                     default:
                         //Error                     
