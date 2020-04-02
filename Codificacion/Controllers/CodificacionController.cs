@@ -21,10 +21,10 @@ namespace Codificacion.Controllers
                         Cifrados.ZigZag.Instance.Ingresar(Info.path, Info.Carriles);
                         break;
                     case "Vertical":
-                        Cifrados.Ruta_Espiral.Instance.Ingresar(Info.path, Info.filas);
+                        Cifrados.Ruta_Espiral.Instance.Ingresar(Info.path, Info.filas, Info.fileName);
                         break;
                     case "espiral":
-                        Cifrados.Ruta_Espiral.Instance.Ingresar(Info.path, Info.filas);
+                        Cifrados.Ruta_Espiral.Instance.Ingresar(Info.path, Info.filas, Info.fileName);
                         break;
                     default:
                         //Error                     
