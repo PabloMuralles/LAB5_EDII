@@ -38,8 +38,6 @@ namespace Codificacion.Cifrados
         private byte[] Cifrado(byte[] Texto, int niveles_)
         {
             var TextoCifrado = new List<string>();
-            var Posicion = 0;
-            var Incrementador = 1;
             var ElemetosXola = (2 * niveles_) - 2;
             var CantidadOlas = (Texto.Length) / ElemetosXola;
             CantidadOlas = CantidadOlas % 1 >= 0.5 ? Convert.ToInt32(CantidadOlas) : Convert.ToInt32(CantidadOlas) + 1;
@@ -57,7 +55,7 @@ namespace Codificacion.Cifrados
                 for (int i = Texto.Length; i < ElementosTotales; i++)
                 {
 
-                    TextoCompleto[i] = Convert.ToByte(Convert.ToChar("$"));
+                    TextoCompleto[i] = Convert.ToByte(Convert.ToChar(" "));
                 }
 
             }
@@ -71,6 +69,8 @@ namespace Codificacion.Cifrados
                 TextoCifrado.Add("");
             }
 
+            var Posicion = 0;
+            var Incrementador = 1;
             foreach (var item in TextoCompleto)
             {
                 if (Posicion + Incrementador == niveles_)
@@ -135,15 +135,19 @@ namespace Codificacion.Cifrados
                     var Longitud = Convert.ToInt32(Reader.BaseStream.Length);
                     var buffer = new byte[Longitud];
                     buffer = Reader.ReadBytes(Longitud);
-                    Decifrar(buffer, niveles);
+                    var TextoDecifrado = Decifrar(buffer, niveles);
+                    EscrituraDecifrado(TextoDecifrado, nombre);
 
                 }
 
             }
 
         }
-        private void Decifrar(byte[] TextoCifrado, int niveles)
+
+        private byte[] Decifrar(byte[] TextoCifrado, int niveles)
         {
+             
+
             var NivelesIntermedio = niveles - 2;
 
             var CaracteresNivelesNoIntermedios = TextoCifrado.Length / (2 + (2 * NivelesIntermedio));
@@ -152,8 +156,133 @@ namespace Codificacion.Cifrados
 
             var IntervalosCaracteresIntermedio = CantidadCaracterIntermedio / NivelesIntermedio;
 
+            var IntervalosIntermedios = CantidadCaracterIntermedio / IntervalosCaracteresIntermedio;
+
+            var CantidadEspaciosListas = 2 + IntervalosIntermedios;
+
+            var CaracteresDivididos = new Queue<byte>[CantidadEspaciosListas];
+
+            for (int i = 0; i < CantidadEspaciosListas; i++)
+            {
+                CaracteresDivididos[i]= new Queue<byte>();
+            }
+
+            var ContadorNiveles = 1;
+            var Posicion = 0;
+            var ContadorCaracteresIntermedio = 1;
+
+            foreach (var item in TextoCifrado)
+            {
+                if (Posicion < CaracteresNivelesNoIntermedios)
+                {
+                    CaracteresDivididos[0].Enqueue(item);
+                    
+                }
+                else
+                {
+                    if (Posicion == CaracteresNivelesNoIntermedios)
+                    {
+                        CaracteresDivididos[ContadorNiveles].Enqueue(item);
+                        
+                  
+                    }
+                    else
+                    {
+                        if (ContadorCaracteresIntermedio < IntervalosCaracteresIntermedio)
+                        {
+                            CaracteresDivididos[ContadorNiveles].Enqueue(item);
+                            ContadorCaracteresIntermedio++;
+                        }
+                        else
+                        {
+                            if (ContadorNiveles == niveles - 1 )
+                            {
+                                CaracteresDivididos[ContadorNiveles].Enqueue(item);
+                            }
+                            else
+                            {
+                                ContadorCaracteresIntermedio = 1;
+                                ContadorNiveles++;
+                                CaracteresDivididos[ContadorNiveles].Enqueue(item);
+                                 
+                            }
+                        }
+                    }
+                }
+                Posicion++;
+            }
+
+            var Movimiento = 0;
+            var NivelCaracter  = 0;
+            var TextoDecifrado = new List<byte>();
+
+            var contadroasdfj = 0;
+             
+
+            while (CaracteresDivididos[0].Count != 0 || CaracteresDivididos[niveles - 1].Count != 0 || CaracteresDivididos[1].Count != 0)
+            {
+                if (contadroasdfj == 28)
+                {
+
+                }
+                if (NivelCaracter == 0)
+                {
+                    TextoDecifrado.Add(CaracteresDivididos[NivelCaracter].Dequeue());
+                    NivelCaracter++;
+                    Movimiento = 0;
+                }
+                else
+                {
+                    if (NivelCaracter < niveles - 1 && Movimiento == 0 )
+                    {
+                        TextoDecifrado.Add(CaracteresDivididos[NivelCaracter].Dequeue());
+                        NivelCaracter++;
+                    }
+                    else
+                    {
+                        if (NivelCaracter > 0 && Movimiento == 1)
+                        {
+                            TextoDecifrado.Add(CaracteresDivididos[NivelCaracter].Dequeue());
+                            NivelCaracter--;
+                        }
+                        else
+                        {
+                            if (NivelCaracter == niveles - 1)
+                            {
+                                TextoDecifrado.Add(CaracteresDivididos[NivelCaracter].Dequeue());
+                                Movimiento = 1;
+                                NivelCaracter = niveles - 2;
+
+                            }
+                        }
+                    }
+                }
+                contadroasdfj++;
+            }
+            return TextoDecifrado.ToArray();
 
 
+        }
+
+
+
+        private void EscrituraDecifrado(byte[] TextoDecifrado, string nombre_)
+        {
+            string CarpetaZigzagCifrado = Environment.CurrentDirectory;
+
+            if (!Directory.Exists(Path.Combine(CarpetaZigzagCifrado, "DecifradoZigZag")))
+            {
+                Directory.CreateDirectory(Path.Combine(CarpetaZigzagCifrado, "DecifradoZigZag"));
+            }
+
+            using (var streamwriter = new FileStream(Path.Combine(CarpetaZigzagCifrado, "DecifradoZigZag", $"{nombre_}.txt"), FileMode.OpenOrCreate))
+            {
+                using (var write = new BinaryWriter(streamwriter))
+                {
+                    write.Write(TextoDecifrado);
+                }
+
+            }
 
         }
     }
