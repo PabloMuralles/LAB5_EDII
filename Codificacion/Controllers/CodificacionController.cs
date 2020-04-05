@@ -15,7 +15,7 @@ namespace Codificacion.Controllers
                 { 
  
                     case "cesar":
-                        Cifrados.Cesar.Instance.Ingresar(Info.path);
+                        Cifrados.Cesar.Instance.Ingresar(Info.path, Info.fileName);
                         break;
  
                     case "zigzag":
@@ -47,7 +47,8 @@ namespace Codificacion.Controllers
                 {
  
                     case "Cesar":
-                        Cifrados.Cesar.Instance.IngresoDecidrado();
+ 
+                        Cifrados.Cesar.Instance.IngresoDescifrado(Info.path,Info.fileName);
                         break;
                     case "zigzag":
                         Cifrados.ZigZag.Instance.IngresarDecifrado(Info.path,Info.carriles,Info.fileName);
@@ -57,7 +58,7 @@ namespace Codificacion.Controllers
                         break;
                     case "espiral":
                         Cifrados.Ruta_Espiral.Instance.IngresoDecidrado( );
- 
+
                         break;
  
                     default:
