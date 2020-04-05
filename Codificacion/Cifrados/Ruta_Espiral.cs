@@ -116,7 +116,7 @@ namespace Codificacion.Cifrados
             {
                 Directory.CreateDirectory(Path.Combine(CarpetaEspiralCifrado, "CifradoEspiral"));
             }
-            using (var writeStream = new FileStream(Path.Combine(CarpetaEspiralCifrado, "CifradoEspiral", $"{nombre_}.text"), FileMode.OpenOrCreate))
+            using (var writeStream = new FileStream(Path.Combine(CarpetaEspiralCifrado, "CifradoEspiral", $"{nombre_}.txt"), FileMode.OpenOrCreate))
             {
                 using (var writer = new BinaryWriter(writeStream))
                 {
@@ -129,8 +129,6 @@ namespace Codificacion.Cifrados
         }
 
         #endregion
-
-
         #region Desifrado
         public void IngresoDecidrado(string path, int filas, string nombre)
         {
@@ -225,7 +223,7 @@ namespace Codificacion.Cifrados
             {
                 Directory.CreateDirectory(Path.Combine(CarpetaEspiralDescifrado, "DescifradoEspiral"));
             }
-            using (var writeStream = new FileStream(Path.Combine(CarpetaEspiralDescifrado, "DescifradoEspiral", $"{Nombre}.text"), FileMode.OpenOrCreate))
+            using (var writeStream = new FileStream(Path.Combine(CarpetaEspiralDescifrado, "DescifradoEspiral", $"{Nombre}.txt"), FileMode.OpenOrCreate))
             {
                 using (var writer = new BinaryWriter(writeStream))
                 {

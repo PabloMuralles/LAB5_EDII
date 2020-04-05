@@ -39,7 +39,7 @@ namespace Codificacion.Cifrados
             {
                 Directory.CreateDirectory(Path.Combine(CarpetaCesarCifrar, "CifradoCesar"));
             }
-            using (var writeStream = new FileStream(Path.Combine(CarpetaCesarCifrar, "CifradoCesar", $"{Nombre}.text"), FileMode.OpenOrCreate))
+            using (var writeStream = new FileStream(Path.Combine(CarpetaCesarCifrar, "CifradoCesar", $"{Nombre}.txt"), FileMode.OpenOrCreate))
             {
                 string Texto = string.Empty;
               foreach (var item in Texto_cifrado)
@@ -59,7 +59,7 @@ namespace Codificacion.Cifrados
             {
                 Directory.CreateDirectory(Path.Combine(CarpetaCesarDesifrar, "DescifradoCesar"));
             }
-            using (var writeStream = new FileStream(Path.Combine(CarpetaCesarDesifrar, "DescifradoCesar", $"{Nombre}.text"), FileMode.OpenOrCreate))
+            using (var writeStream = new FileStream(Path.Combine(CarpetaCesarDesifrar, "DescifradoCesar", $"{Nombre}.txt"), FileMode.OpenOrCreate))
             {
                 string Texto = string.Empty;
                 foreach (var item in Texto_cifrado)

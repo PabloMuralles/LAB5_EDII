@@ -23,7 +23,7 @@ namespace Codificacion.Controllers
                         break;
                     case "Vertical":
  
-                        Cifrados.Ruta_Espiral.Instance.Ingresar(Info.path, Info.filas, Info.fileName);
+                        Cifrados.Ruta_Vertical.Instance.Ingresar(Info.path, Info.filas, Info.fileName);
                         break;
                     case "espiral":
                         Cifrados.Ruta_Espiral.Instance.Ingresar(Info.path, Info.filas, Info.fileName);
@@ -62,8 +62,7 @@ namespace Codificacion.Controllers
                     case "espiral":
                         Cifrados.Ruta_Espiral.Instance.IngresoDecidrado(Info.path, Info.filas, Info.fileName);
  
-                        break;
- 
+                        break; 
                     default:
                         //Error                     
                         break;
