@@ -59,19 +59,23 @@ namespace Codificacion.Cifrados
                         Matriz[j, i] = Caracter.Dequeue();
                         Contador++;
                     }
+                    else
+                    {
+                        Matriz[j, i] = Convert.ToByte(Convert.ToChar(" "));
+                    }
                      
                 }
             }
+
             var TextoCifrado = new List<byte>();
-            var ContadorSalidaText = 0;
+             
             for (int i = 0; i < Columnas; i++)
             {
                 for (int j = 0; j < Filas; j++)
                 {
-                    if (ContadorSalidaText<Texto.Length)
-                    {
+                   
                         TextoCifrado.Add(Matriz[i, j]);
-                    }
+                  
                 }
             }
             return TextoCifrado.ToArray();
@@ -118,9 +122,9 @@ namespace Codificacion.Cifrados
             var Columnas = TextoCifrado.Length / Filas;
              
             var Matriz = new byte[Columnas, Filas];
-            var jfsdf = Columnas % 1;
+           
             var Caracter = new Queue<byte>();
-            var Contador = 0;
+            
 
             foreach (var item in TextoCifrado)
             {
@@ -131,28 +135,24 @@ namespace Codificacion.Cifrados
             {
                 for (int j = 0; j < Filas; j++)
                 {
-                    if (Contador < TextoCifrado.Length)
-                    {
+                     
                         Matriz[i, j] = Caracter.Dequeue();
-                        Contador++;
-                    }
+                       
+                     
 
                 }
 
             }
             var TextoDecifrado = new List<byte>();
-            var ContadorDecifrado = 0;
+             
 
             for (int i = 0; i < Filas; i++)
             {
                 for (int j = 0; j < Columnas; j++)
-                {
-                    if (ContadorDecifrado < TextoCifrado.Length)
-                    {
-                        TextoDecifrado.Add(Matriz[j, i]);
-                        Contador++;
+                { 
 
-                    }
+                    TextoDecifrado.Add(Matriz[j, i]);
+  
                 }
             }
 
