@@ -22,10 +22,11 @@ namespace Codificacion.Controllers
                         Cifrados.ZigZag.Instance.Ingresar(Info.path, Info.carriles,Info.fileName);
                         break;
                     case "Vertical":
-                        Cifrados.Ruta_Vertical.Instance.Ingresar(Info.path, Info.filas,Info.fileName);
+ 
+                        Cifrados.Ruta_Espiral.Instance.Ingresar(Info.path, Info.filas, Info.fileName);
                         break;
                     case "espiral":
-                        Cifrados.Ruta_Espiral.Instance.Ingresar(/*Info.path, Info.filas*/);
+                        Cifrados.Ruta_Espiral.Instance.Ingresar(Info.path, Info.filas, Info.fileName);
  
                         break;
                     default:
@@ -54,11 +55,13 @@ namespace Codificacion.Controllers
                         Cifrados.ZigZag.Instance.IngresarDecifrado(Info.path,Info.carriles,Info.fileName);
                         break;
                     case "Vertical":
+ 
                         Cifrados.Ruta_Vertical.Instance.IngresoDecidrado(Info.path, Info.filas, Info.fileName);
                         break;
+              
                     case "espiral":
-                        Cifrados.Ruta_Espiral.Instance.IngresoDecidrado( );
-
+                        Cifrados.Ruta_Espiral.Instance.IngresoDecidrado(Info.path, Info.filas, Info.fileName);
+ 
                         break;
  
                     default:

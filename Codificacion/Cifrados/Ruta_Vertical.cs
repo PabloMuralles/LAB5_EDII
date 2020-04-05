@@ -19,6 +19,7 @@ namespace Codificacion.Cifrados
                 return _instance;
             }
         }
+ 
 
         public void Ingresar(string path, int filas, string nombre)
         {
@@ -34,6 +35,7 @@ namespace Codificacion.Cifrados
 
                 }
             }
+ 
 
         }
 
