@@ -120,12 +120,10 @@ namespace Codificacion.Cifrados
             {
                 using (var writer = new BinaryWriter(writeStream))
                 {
-                    writer.Seek(0, SeekOrigin.End);
                     writer.Write(System.Text.Encoding.Unicode.GetBytes(texto));
                 }
             }
-            textoMatriz = string.Empty;
-             
+                    
         }
 
         #endregion
@@ -217,7 +215,6 @@ namespace Codificacion.Cifrados
         }
         public void EscribirEnArchivoDecifrado(string texto, string Nombre)
         {
-
             string CarpetaEspiralDescifrado = Environment.CurrentDirectory;
             if (!Directory.Exists(Path.Combine(CarpetaEspiralDescifrado, "DescifradoEspiral")))
             {
@@ -226,12 +223,10 @@ namespace Codificacion.Cifrados
             using (var writeStream = new FileStream(Path.Combine(CarpetaEspiralDescifrado, "DescifradoEspiral", $"{Nombre}.txt"), FileMode.OpenOrCreate))
             {
                 using (var writer = new BinaryWriter(writeStream))
-                {
-                    writer.Seek(0, SeekOrigin.End);
+                {                   
                     writer.Write(System.Text.Encoding.Unicode.GetBytes(texto));
                 }
             }
-            textoMatriz = string.Empty;
         }
         #endregion
     }

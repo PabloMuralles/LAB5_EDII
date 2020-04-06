@@ -34,6 +34,11 @@ namespace Codificacion.Cifrados
         }
         public void Escrituracifrado(string Nombre)
         {
+                string Texto = string.Empty;
+              foreach (var item in Texto_cifrado)
+              {
+                     Texto = Texto + Convert.ToString(item) ;
+              }
             string CarpetaCesarCifrar = Environment.CurrentDirectory;
             if (!Directory.Exists(Path.Combine(CarpetaCesarCifrar, "CifradoCesar")))
             {
@@ -41,11 +46,6 @@ namespace Codificacion.Cifrados
             }
             using (var writeStream = new FileStream(Path.Combine(CarpetaCesarCifrar, "CifradoCesar", $"{Nombre}.txt"), FileMode.OpenOrCreate))
             {
-                string Texto = string.Empty;
-              foreach (var item in Texto_cifrado)
-              {
-                     Texto = Texto + Convert.ToString(item) ;
-              }
                 using (var write = new BinaryWriter(writeStream))
                 {
                     write.Write(Texto);
@@ -54,6 +54,11 @@ namespace Codificacion.Cifrados
         }
         public void EscrituraDesifrado(string Nombre)
         {
+                string Texto = string.Empty;
+                foreach (var item in Texto_cifrado)
+                {
+                    Texto = Texto + Convert.ToString(item);
+                }
             string CarpetaCesarDesifrar = Environment.CurrentDirectory;
             if (!Directory.Exists(Path.Combine(CarpetaCesarDesifrar, "DescifradoCesar")))
             {
@@ -61,11 +66,6 @@ namespace Codificacion.Cifrados
             }
             using (var writeStream = new FileStream(Path.Combine(CarpetaCesarDesifrar, "DescifradoCesar", $"{Nombre}.txt"), FileMode.OpenOrCreate))
             {
-                string Texto = string.Empty;
-                foreach (var item in Texto_cifrado)
-                {
-                    Texto = Texto + Convert.ToString(item);
-                }
                 using (var write = new BinaryWriter(writeStream))
                 {
                     write.Write(Texto);
